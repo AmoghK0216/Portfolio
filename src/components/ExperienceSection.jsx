@@ -264,12 +264,12 @@ const ExperienceSection = ({ isOpen, onClose, experiences }) => {
                 <div>
                   <div className="w-6 h-6 mx-auto mb-6 relative animate-rotate-random" style={{ transformStyle: 'preserve-3d' }}>
                     {/* Cube wireframe */}
-                    <div className="absolute inset-0 border-2 border-yellow-400/60" style={{ transform: 'translateZ(16px)' }}></div>
-                    <div className="absolute inset-0 border-2 border-yellow-400/60" style={{ transform: 'translateZ(-16px)' }}></div>
-                    <div className="absolute inset-0 border-2 border-yellow-400/60" style={{ transform: 'rotateY(90deg) translateZ(16px)' }}></div>
-                    <div className="absolute inset-0 border-2 border-yellow-400/60" style={{ transform: 'rotateY(90deg) translateZ(-16px)' }}></div>
-                    <div className="absolute inset-0 border-2 border-yellow-400/60" style={{ transform: 'rotateX(90deg) translateZ(16px)' }}></div>
-                    <div className="absolute inset-0 border-2 border-yellow-400/60" style={{ transform: 'rotateX(90deg) translateZ(-16px)' }}></div>
+                    <div className="absolute inset-0 border-8 border-yellow-400/60" style={{ transform: 'translateZ(16px)' }}></div>
+                    <div className="absolute inset-0 border-8 border-yellow-400/60" style={{ transform: 'translateZ(-16px)' }}></div>
+                    <div className="absolute inset-0 border-8 border-yellow-400/60" style={{ transform: 'rotateY(90deg) translateZ(16px)' }}></div>
+                    <div className="absolute inset-0 border-8 border-yellow-400/60" style={{ transform: 'rotateY(90deg) translateZ(-16px)' }}></div>
+                    <div className="absolute inset-0 border-8 border-yellow-400/60" style={{ transform: 'rotateX(90deg) translateZ(16px)' }}></div>
+                    <div className="absolute inset-0 border-8 border-yellow-400/60" style={{ transform: 'rotateX(90deg) translateZ(-16px)' }}></div>
                   </div>
                   <p className="text-zinc-500 text-lg">Select an experience to view details</p>
                 </div>
