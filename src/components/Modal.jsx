@@ -1,6 +1,7 @@
 import React from 'react';
 import { X, Github } from 'lucide-react';
 import ExperienceSection from './ExperienceSection';
+import ProjectsSection from './ProjectsSection';
 
 const Modal = ({ isOpen, onClose, content }) => {
   // Handle experience separately with new component
@@ -10,6 +11,17 @@ const Modal = ({ isOpen, onClose, content }) => {
         isOpen={isOpen}
         onClose={onClose}
         experiences={content.content}
+      />
+    );
+  }
+
+  // Handle projects with new component
+  if (content?.type === 'projects') {
+    return (
+      <ProjectsSection 
+        isOpen={isOpen}
+        onClose={onClose}
+        projects={content.content}
       />
     );
   }
@@ -25,58 +37,6 @@ const Modal = ({ isOpen, onClose, content }) => {
         >
           <X size={22} />
         </button>
-
-        {content?.type === 'experience_old' && (
-          <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-yellow-400 mb-8">EXPERIENCE</h2>
-            <div className="space-y-8">
-              {content.content.map((exp, index) => (
-                <div key={index} className="border-l-2 border-yellow-400/30 pl-4 hover:border-yellow-400 transition-colors">
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
-                    <h3 className="text-xl font-bold text-white">{exp.company}</h3>
-                    <span className="text-yellow-400 text-sm font-medium">{exp.period}</span>
-                  </div>
-                  <p className="text-zinc-400 mb-2">{exp.role}</p>
-                  <ul className="space-y-2 ml-2">
-                    {exp.achievements.map((achievement, i) => (
-                      <li key={i} className="text-zinc-300 flex items-start gap-2">
-                        <span className="text-yellow-400 mt-0.5">▸</span>
-                        <span>{achievement}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {content?.type === 'projects' && (
-          <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-yellow-400 mb-8">PROJECTS</h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              {content.content.map((project, idx) => (
-                <div
-                  key={idx}
-                  onClick={() => project.link && window.open(project.link, '_blank')}
-                  className={`border border-yellow-500/20 hover:border-yellow-400/60 p-4 transition-all ${
-                    project.link ? 'cursor-pointer hover:scale-105' : ''
-                  }`}
-                >
-                  <h3 className="text-xl font-bold text-white mb-2">{project.name}</h3>
-                  <p className="text-yellow-400 text-sm mb-2 font-medium">{project.tech}</p>
-                  <p className="text-zinc-400 mb-2">{project.description}</p>
-                  {project.link && (
-                    <div className="flex items-center gap-2 text-yellow-400 text-sm font-medium">
-                      <Github size={14} />
-                      <span>VIEW CODE</span>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
 
         {content?.type === 'skills' && (
           <div>
