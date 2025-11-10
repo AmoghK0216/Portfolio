@@ -2,6 +2,7 @@ import React from 'react';
 import { X, Github } from 'lucide-react';
 import ExperienceSection from './ExperienceSection';
 import ProjectsSection from './ProjectsSection';
+import SkillsSection from './SkillsSection';
 
 const Modal = ({ isOpen, onClose, content }) => {
   // Handle experience separately with new component
@@ -24,6 +25,17 @@ const Modal = ({ isOpen, onClose, content }) => {
         isOpen={isOpen}
         onClose={onClose}
         projects={content.content}
+      />
+    );
+  }
+
+  if (content?.type === 'skills') {
+    return (
+      <SkillsSection 
+        key={`skills-${content.timestamp || Date.now()}`}
+        isOpen={isOpen}
+        onClose={onClose}
+        skills={content.content}
       />
     );
   }
