@@ -8,6 +8,7 @@ const Modal = ({ isOpen, onClose, content }) => {
   if (content?.type === 'experience') {
     return (
       <ExperienceSection 
+        key={`experience-${content.timestamp || Date.now()}`}
         isOpen={isOpen}
         onClose={onClose}
         experiences={content.content}
@@ -19,6 +20,7 @@ const Modal = ({ isOpen, onClose, content }) => {
   if (content?.type === 'projects') {
     return (
       <ProjectsSection 
+        key={`projects-${content.timestamp || Date.now()}`}
         isOpen={isOpen}
         onClose={onClose}
         projects={content.content}
@@ -26,7 +28,7 @@ const Modal = ({ isOpen, onClose, content }) => {
     );
   }
 
-  if (!isOpen) return null;
+  if (!isOpen || !content) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center p-6 pt-24 bg-zinc-950/90 backdrop-blur-md overflow-auto">
