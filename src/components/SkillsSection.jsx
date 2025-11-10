@@ -166,8 +166,8 @@ const SkillsSection = ({ isOpen, onClose, skills }) => {
                   const floatDelay = Math.random() * 1.5;
                   const floatDuration = 4 + Math.random() * 3;
                   // Stagger glow delays significantly to ensure varied timing
-                  const glowDelay = index * 0.3 + Math.random() * 2;
-                  const glowDuration = 4 + Math.random() * 3;
+                  const glowDelay = index * 0.3 + Math.random() * 6;
+                  const glowDuration = 5 + Math.random() * 3;
                   
                   return (
                     <div
