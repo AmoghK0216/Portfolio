@@ -54,7 +54,7 @@ const SkillsSection = ({ isOpen, onClose, skills }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-zinc-950/98 backdrop-blur-xl overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-zinc-950/98 backdrop-blur-xl">
       {/* Deep ocean background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Depth gradient */}
@@ -166,8 +166,8 @@ const SkillsSection = ({ isOpen, onClose, skills }) => {
                   const floatDelay = Math.random() * 1.5;
                   const floatDuration = 4 + Math.random() * 3;
                   // Stagger glow delays significantly to ensure varied timing
-                  const glowDelay = index * 0.3 + Math.random() * 6;
-                  const glowDuration = 5 + Math.random() * 3;
+                  const glowDelay = index * 0.3 + Math.random() * 2;
+                  const glowDuration = 4 + Math.random() * 3;
                   
                   return (
                     <div
@@ -427,25 +427,4 @@ const SkillsSection = ({ isOpen, onClose, skills }) => {
   );
 };
 
-// Mock data for preview
-const mockSkills = {
-  Languages: ['Java', 'Python', 'JavaScript', 'Dart', 'Go'],
-  Frameworks: ['Spring', 'React', 'Node.js', 'Flutter'],
-  Databases: ['SQL', 'MongoDB', 'MySQL'],
-  Tools: ['Docker', 'Jenkins', 'Git', 'Selenium'],
-  Concepts: ['REST APIs', 'Microservices', 'CI/CD', 'Agile'],
-};
-
-export default function App() {
-  const [isOpen, setIsOpen] = useState(true);
-  
-  return (
-    <div className="min-h-screen bg-zinc-950">
-      <SkillsSection 
-        isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
-        skills={mockSkills}
-      />
-    </div>
-  );
-}
+export default SkillsSection;

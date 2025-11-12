@@ -17,7 +17,7 @@ const ProjectsSection = ({ isOpen, onClose, projects }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-zinc-950/95 backdrop-blur-xl overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-zinc-950/95 backdrop-blur-xl">
       {/* Animated grid background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Animated grid lines */}
@@ -168,16 +168,6 @@ const ProjectsSection = ({ isOpen, onClose, projects }) => {
                           <Github size={16} className="group-hover/btn:rotate-12 transition-transform" />
                           <span>View Code</span>
                         </a>
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setSelectedProject(selectedProject === index ? null : index);
-                          }}
-                          className="flex items-center gap-2 px-4 py-2 border border-yellow-400/30 hover:border-yellow-400 hover:bg-yellow-400/10 text-yellow-400 text-sm font-medium rounded-lg transition-all duration-300"
-                        >
-                          <ExternalLink size={16} />
-                          <span>Details</span>
-                        </button>
                       </div>
                     )}
 
@@ -418,44 +408,4 @@ const getProjectHighlights = (project) => {
   ];
 };
 
-// Mock data for preview
-const mockProjects = [
-  {
-    name: 'HaulAssist',
-    tech: 'React, Go, MySQL',
-    description: 'Cargo shifting platform with dynamic pricing algorithm',
-    link: 'https://github.com/AmoghK0216/HaulAssist',
-  },
-  {
-    name: 'SNU ARC',
-    tech: 'React, Node, MySQL',
-    description: 'Student platform with facility tracking and room reservations',
-    link: 'https://github.com/AmoghK0216/SNU_ARC',
-  },
-  {
-    name: 'FarMart',
-    tech: 'HTML, Bootstrap, PHP, MySQL',
-    description: 'Direct farmer-to-consumer marketplace',
-    link: 'https://github.com/AmoghK0216/Farmart',
-  },
-  {
-    name: 'Cross-Language Document Retrieval',
-    tech: 'Python, BERT, Transformers',
-    description: 'Multilingual information retrieval using fine-tuned BERT',
-    link: null,
-  },
-];
-
-export default function App() {
-  const [isOpen, setIsOpen] = useState(true);
-  
-  return (
-    <div className="min-h-screen bg-zinc-950">
-      <ProjectsSection 
-        isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
-        projects={mockProjects}
-      />
-    </div>
-  );
-}
+export default ProjectsSection;

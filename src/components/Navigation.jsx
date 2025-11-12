@@ -26,7 +26,7 @@ const Navigation = () => {
           <Github size={20} />
         </a>
         <a 
-          href="https://linkedin.com/in/amogh-krishna-padakanti" 
+          href="https://www.linkedin.com/in/amogh-krishna-padakanti-662678207" 
           target="_blank" 
           rel="noopener noreferrer" 
           className="hover:text-yellow-400 transition-colors" 
