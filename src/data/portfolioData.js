@@ -59,6 +59,6 @@ export const skills = {
   Languages: ['Java', 'Python', 'JavaScript', 'Dart', 'Go'],
   Frameworks: ['Spring', 'React', 'Node.js', 'Flutter'],
   Databases: ['SQL', 'MongoDB', 'MySQL'],
-  Tools: ['Docker', 'Jenkins', 'Git', 'Selenium'],
+  Tools: ['Docker', 'Jenkins', 'Git', 'Selenium', 'Linux', 'AWS: EC2, S3'],
   Concepts: ['REST APIs', 'Microservices', 'CI/CD', 'Agile'],
 };

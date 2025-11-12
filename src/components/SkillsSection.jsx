@@ -54,7 +54,7 @@ const SkillsSection = ({ isOpen, onClose, skills }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-zinc-950/98 backdrop-blur-xl overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-zinc-950/98 backdrop-blur-xl">
       {/* Deep ocean background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Depth gradient */}
@@ -427,25 +427,4 @@ const SkillsSection = ({ isOpen, onClose, skills }) => {
   );
 };
 
-// Mock data for preview
-const mockSkills = {
-  Languages: ['Java', 'Python', 'JavaScript', 'Dart', 'Go'],
-  Frameworks: ['Spring', 'React', 'Node.js', 'Flutter'],
-  Databases: ['SQL', 'MongoDB', 'Firebase'],
-  Tools: ['Docker', 'Jenkins', 'Git', 'Selenium', 'Linux'],
-  Concepts: ['REST APIs', 'Microservices', 'CI/CD', 'Agile'],
-};
-
-export default function App() {
-  const [isOpen, setIsOpen] = useState(true);
-  
-  return (
-    <div className="min-h-screen bg-zinc-950">
-      <SkillsSection 
-        isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
-        skills={mockSkills}
-      />
-    </div>
-  );
-}
+export default SkillsSection;

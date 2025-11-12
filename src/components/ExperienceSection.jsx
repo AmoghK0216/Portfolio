@@ -17,7 +17,7 @@ const ExperienceSection = ({ isOpen, onClose, experiences }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-zinc-950/95 backdrop-blur-xl overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-zinc-950/95 backdrop-blur-xl">
       {/* Animated background particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(60)].map((_, i) => {
@@ -503,47 +503,4 @@ const ExperienceSection = ({ isOpen, onClose, experiences }) => {
   );
 };
 
-// Mock data for preview
-const mockExperiences = [
-  {
-    company: 'Brane Enterprises',
-    role: 'Software Engineer · Flutter Developer',
-    period: 'Jan 2024 - Jul 2024',
-    achievements: [
-      'Enhanced Site-Builder with drag-and-drop UI components',
-      'Reduced manual setup time by 25% through API integration',
-    ],
-  },
-  {
-    company: 'Brane Enterprises',
-    role: 'Software Engineer · Database, Spring Developer',
-    period: 'Jul 2023 - Jan 2024',
-    achievements: [
-      'Implemented fault-tolerant transaction management',
-      'Reduced redeployment cycles by 40% with Spring Cloud',
-    ],
-  },
-  {
-    company: 'Brane Enterprises',
-    role: 'Software Engineer · Adapters and Automation',
-    period: 'Jan 2023 - Jul 2023',
-    achievements: [
-      'Developed Google Classroom and Firebase adapters',
-      'Achieved 80%+ code coverage with comprehensive testing',
-    ],
-  },
-];
-
-export default function App() {
-  const [isOpen, setIsOpen] = useState(true);
-  
-  return (
-    <div className="min-h-screen bg-zinc-950">
-      <ExperienceSection 
-        isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
-        experiences={mockExperiences}
-      />
-    </div>
-  );
-}
+export default ExperienceSection;
