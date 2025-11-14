@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Github, Linkedin } from 'lucide-react';
+import { Github, Linkedin } from 'lucide-react';
 
 const Navigation = () => {
   return (
@@ -9,13 +9,6 @@ const Navigation = () => {
         <span className="text-white">K</span>
       </div>
       <div className="flex items-center gap-4">
-        <a 
-          href="mailto:amoghkrishna16@gmail.com" 
-          className="hover:text-yellow-400 transition-colors" 
-          title="Email"
-        >
-          <Mail size={20} />
-        </a>
         <a 
           href="https://github.com/AmoghK0216" 
           target="_blank" 

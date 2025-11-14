@@ -4,8 +4,8 @@ export const experiences = [
     role: 'Software Engineer · Flutter Developer',
     period: 'Jan 2024 - Jul 2024',
     achievements: [
-      'Enhanced Site-Builder with drag-and-drop UI components',
-      'Reduced manual setup time by 25% through API integration',
+      'Developed a low-code no-code platform using Flutter. Added functionalities like custom themes, drag-and-drop UI, and third-party integrations',
+      'Decreased the development time for in-house applications by 50% through reusable components',
     ],
   },
   {
@@ -13,8 +13,8 @@ export const experiences = [
     role: 'Software Engineer · Database, Spring Developer',
     period: 'Jul 2023 - Jan 2024',
     achievements: [
-      'Implemented fault-tolerant transaction management',
-      'Reduced redeployment cycles by 40% with Spring Cloud',
+      'Implemented fault-tolerant transaction management when storing data. Data updated in the main table only when committed, in case of failure rolled back to previous state',
+      'Integrated Spring Cloud Config Server for centralized configuration management across multiple microservices. Reduced redeployment cycles by 40% with Spring Cloud',
     ],
   },
   {
@@ -22,8 +22,8 @@ export const experiences = [
     role: 'Software Engineer · Adapters and Automation',
     period: 'Jan 2023 - Jul 2023',
     achievements: [
-      'Developed Google Classroom and Firebase adapters',
-      'Achieved 80%+ code coverage with comprehensive testing',
+      'Developed Google Classroom and Firebase adapters so users can easily integrate them into their low-code platform workflows',
+      'Performed end-to-end testing and automated deployment using Selenium and Jenkins, reducing manual effort by 80%. Implemented load-testing using K6 and achieved a 90% code coverage',
     ],
   },
 ];
@@ -59,6 +59,6 @@ export const skills = {
   Languages: ['Java', 'Python', 'JavaScript', 'Dart', 'Go'],
   Frameworks: ['Spring', 'React', 'Node.js', 'Flutter'],
   Databases: ['SQL', 'MongoDB', 'MySQL'],
-  Tools: ['Docker', 'Jenkins', 'Git', 'Selenium', 'Linux', 'AWS: EC2, S3'],
+  Tools: ['Docker', 'Jenkins', 'Git', 'Selenium', 'Linux', 'AWS: EC2, S3', 'Postman'],
   Concepts: ['REST APIs', 'Microservices', 'CI/CD', 'Agile'],
 };

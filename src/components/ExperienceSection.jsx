@@ -170,7 +170,7 @@ const ExperienceSection = ({ isOpen, onClose, experiences }) => {
                           {/* Animated corner accent */}
                           <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-yellow-400/30 animate-corner-expand" style={{ animationDelay: '0.1s' }} />
                           <div className="text-2xl font-black text-yellow-400 mb-1 animate-number-pop" style={{ animationDelay: '0.1s' }}>
-                            {index === 0 ? '25%' : index === 1 ? '40%' : '80%'}
+                            {index === 0 ? '50%' : index === 1 ? '40%' : '80%'}
                           </div>
                           <div className="text-[10px] text-zinc-400 uppercase tracking-wider">Impact</div>
                         </div>
@@ -253,7 +253,7 @@ const ExperienceSection = ({ isOpen, onClose, experiences }) => {
                     {/* Animated corner accent */}
                     <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-yellow-400/30 animate-corner-expand" style={{ animationDelay: '0.1s' }} />
                     <div className="text-3xl font-black text-yellow-400 mb-1 animate-number-pop" style={{ animationDelay: '0.1s' }}>
-                      {selectedExp === 0 ? '25%' : selectedExp === 1 ? '40%' : '80%'}
+                      {selectedExp === 0 ? '50%' : selectedExp === 1 ? '40%' : '80%'}
                     </div>
                     <div className="text-xs text-zinc-400 uppercase tracking-wider">Impact</div>
                   </div>

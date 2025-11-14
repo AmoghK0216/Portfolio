@@ -193,6 +193,19 @@ const SkillsSection = ({ isOpen, onClose, skills }) => {
 
                       {/* Skill card */}
                       <div className={`relative bg-gradient-to-br ${gradient} border-2 border-yellow-400/30 rounded-xl p-4 h-full flex flex-col items-center justify-center text-center cursor-pointer overflow-hidden group-hover:border-yellow-400 transition-all duration-300`}>
+                        {/* Animated glowing border line */}
+                        <div 
+                          className="absolute inset-0 rounded-xl opacity-0"
+                          style={{
+                            background: 'linear-gradient(90deg, transparent, rgba(250, 204, 21, 0.8), transparent)',
+                            animation: `borderGlow ${glowDuration}s ease-in-out infinite`,
+                            animationDelay: `${glowDelay}s`,
+                            maskImage: 'linear-gradient(transparent, transparent), linear-gradient(black, black)',
+                            maskClip: 'padding-box, border-box',
+                            maskComposite: 'exclude',
+                          }}
+                        />
+                        
                         {/* Inner pulse */}
                         <div 
                           className="absolute inset-0 rounded-xl opacity-0"
@@ -202,21 +215,6 @@ const SkillsSection = ({ isOpen, onClose, skills }) => {
                             animationDelay: `${glowDelay}s`,
                           }}
                         />
-
-                        {/* Bioluminescent dots */}
-                        <div className="absolute top-2 right-2 flex gap-1">
-                          {[...Array(3)].map((_, i) => (
-                            <div
-                              key={i}
-                              className="w-1 h-1 bg-yellow-400 rounded-full opacity-0"
-                              style={{
-                                animation: `bioluminescence ${glowDuration * 0.6}s ease-in-out infinite`,
-                                animationDelay: `${i * 0.2 + glowDelay}s`,
-                                boxShadow: '0 0 4px rgba(250, 204, 21, 0.9)',
-                              }}
-                            />
-                          ))}
-                        </div>
 
                         {/* Content */}
                         <div className="relative z-10">
@@ -334,14 +332,14 @@ const SkillsSection = ({ isOpen, onClose, skills }) => {
           }
         }
 
-        @keyframes bioluminescence {
+        @keyframes borderGlow {
           0%, 100% {
             opacity: 0;
-            transform: scale(0.3);
+            transform: translateX(-100%) translateY(0);
           }
           50% {
             opacity: 1;
-            transform: scale(1.5);
+            transform: translateX(100%) translateY(0);
           }
         }
 
