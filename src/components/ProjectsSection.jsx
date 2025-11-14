@@ -192,7 +192,7 @@ const ProjectsSection = ({ isOpen, onClose, projects }) => {
                   <div className="absolute top-0 right-0 px-4 py-1 bg-gradient-to-l from-yellow-400/20 to-transparent border-b border-l border-yellow-400/30 rounded-bl-lg">
                     <div className="flex items-center gap-2">
                       <Zap size={12} className="text-yellow-400 animate-pulse-gentle" />
-                      <span className="text-yellow-400 text-xs font-mono font-medium">{project.tech.split(',')[0]}</span>
+                      <span className="text-yellow-400 text-xs font-mono font-medium">{project.type}</span>
                     </div>
                   </div>
 
@@ -473,24 +473,40 @@ const getProjectHighlights = (project) => {
   const highlights = {
     'HaulAssist': [
       'Dynamic pricing algorithm based on distance and cargo weight',
-      'Real-time cargo tracking and status updates',
-      'Secure payment integration with transaction history'
+      'Secure payment integration with transaction history',
+      'Added unit tests using go testing/testify framework, implemented UI automation tests using cypress.'
     ],
     'SNU ARC': [
-      'Interactive campus map with facility locations',
-      'Real-time room availability and booking system',
-      'Student event calendar with notifications'
+      'Real-time room/facility availability and booking system',
+      'Added a student wallet for on-campus transactions',
+      'Implemented role-based access control for different user types: students, staff, and admins'
     ],
     'FarMart': [
       'Direct connection between farmers and consumers',
-      'Product catalog with seasonal availability',
-      'Order management and delivery tracking'
+      'Product catalog with multiple filters and search functionality',
+      'Users can look at multiple vendors and compare prices for the same product'
     ],
     'Cross-Language Document Retrieval': [
       'Fine-tuned BERT model for multilingual queries',
-      'Support for 10+ languages with high accuracy',
+      'Support for 1 local-indian language with high accuracy',
       'Efficient document ranking and retrieval system'
-    ]
+    ],
+    'AI Checkers Bot': [
+      'Implemented Minimax algorithm with alpha-beta pruning for optimal moves',
+      'Graphical interface using Pygame for interactive gameplay',
+      'Achieved competitive performance against human players'
+    ],
+    'Blood Donation Management System': [
+      'Comprehensive system for managing blood donations and donor information',
+      'Implemented donor registration and blood inventory management',
+      'Users can select a location/hospitals to check if a specific blood type is available'
+    ],
+    'Sentiment Analysis on Airline Tweets': [
+      'Analyzed sentiment of tweets related to major airlines',
+      'Used NLTK for text preprocessing and Scikit-learn for model training',
+      'Achieved high accuracy in classifying tweet sentiments',
+      'Trained a sarcasm detection model on articles from The Onion to improve sentiment accuracy'
+    ],
   };
   
   return highlights[project.name] || [

@@ -32,27 +32,52 @@ export const projects = [
   {
     name: 'HaulAssist',
     tech: 'React, Go, MySQL',
+    type: 'Full Stack, Ride Scheduling',
     description: 'Cargo shifting platform with dynamic pricing algorithm',
     link: 'https://github.com/AmoghK0216/HaulAssist',
   },
   {
     name: 'SNU ARC',
     tech: 'React, Node, MySQL',
+    type: 'Full Stack, Campus Management',
     description: 'Student platform with facility tracking and room reservations',
     link: 'https://github.com/AmoghK0216/SNU_ARC',
   },
   {
     name: 'FarMart',
     tech: 'HTML, Bootstrap, PHP, MySQL',
+    type: 'Full Stack, E-commerce',
     description: 'Direct farmer-to-consumer marketplace',
     link: 'https://github.com/AmoghK0216/Farmart',
   },
   {
     name: 'Cross-Language Document Retrieval',
     tech: 'Python, BERT, Transformers',
+    type: 'Machine Learning, Academic',
     description: 'Multilingual information retrieval using fine-tuned BERT',
     link: null,
   },
+  {
+    name: 'AI Checkers Bot',
+    tech: 'Python, Pygame, Minimax Algorithm',
+    type: 'Game Bot',
+    description: 'AI-powered checkers bot using Minimax algorithm with alpha-beta pruning',
+    link: 'https://github.com/AmoghK0216/CheckBot-Alpha',
+  },
+  {
+    name: 'Blood Donation Management System',
+    tech: 'Java, JavaFX, JDBC, MySQL',
+    type: 'Desktop Application',
+    description: 'Comprehensive system for managing blood donations and donor information',
+    link: 'https://github.com/AmoghK0216/Blood-Donation-Management-System',
+  },
+  {
+    name: 'Sentiment Analysis on Airline Tweets',
+    tech: 'Python, NLTK, Scikit-learn',
+    type: 'Data Science, Academic',
+    description: 'Analyzed airline customer sentiments using NLP techniques, with sarcasm detection',
+    link: 'https://github.com/AmoghK0216/Sentiment-Analysis-with-Tone-Detection',
+  }
 ];
 
 export const skills = {
