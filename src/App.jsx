@@ -6,9 +6,11 @@ import InteractiveGrid from './components/InteractiveGrid';
 import ContactBar from './components/ContactBar';
 import Modal from './components/Modal';
 import GlobalStyles from './components/GlobalStyles';
+import LoadingScreen from './components/LoadingScreen';
 import { experiences, projects, skills } from './data/portfolioData';
 
 const Portfolio = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState(null);
 
@@ -27,6 +29,10 @@ const Portfolio = () => {
       document.body.style.overflow = '';
     };
   }, [isModalOpen]);
+
+  const handleLoadComplete = () => {
+    setIsLoading(false);
+  };
 
   const openModal = (type, content) => {
     setModalContent({ type, content });
@@ -52,33 +58,37 @@ const Portfolio = () => {
   };
 
   return (
-    <div className="relative min-h-screen bg-zinc-950 text-white overflow-x-hidden">
-      <ThreeBackground />
-      <Navigation />
+    <>
+      {isLoading && <LoadingScreen onLoadComplete={handleLoadComplete} />}
+      
+      <div className="relative min-h-screen bg-zinc-950 text-white overflow-x-hidden">
+        <ThreeBackground />
+        <Navigation />
 
-      <main className="relative z-10 min-h-screen flex items-center justify-center px-4 sm:px-6 py-24 sm:py-8">
-        <div className="w-full max-w-6xl">
-          <Hero />
-          <InteractiveGrid 
-            experiences={experiences}
-            projects={projects}
-            skills={skills}
-            openModal={openModal}
+        <main className="relative z-10 min-h-screen flex items-center justify-center px-4 sm:px-6 py-24 sm:py-8">
+          <div className="w-full max-w-6xl">
+            <Hero />
+            <InteractiveGrid 
+              experiences={experiences}
+              projects={projects}
+              skills={skills}
+              openModal={openModal}
+            />
+            <ContactBar />
+          </div>
+        </main>
+
+        {isModalOpen && (
+          <Modal 
+            isOpen={isModalOpen}
+            onClose={closeModal}
+            content={modalContent}
           />
-          <ContactBar />
-        </div>
-      </main>
+        )}
 
-      {isModalOpen && (
-        <Modal 
-          isOpen={isModalOpen}
-          onClose={closeModal}
-          content={modalContent}
-        />
-      )}
-
-      <GlobalStyles />
-    </div>
+        <GlobalStyles />
+      </div>
+    </>
   );
 };
 
