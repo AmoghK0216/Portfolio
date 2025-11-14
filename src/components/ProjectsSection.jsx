@@ -16,8 +16,63 @@ const ProjectsSection = ({ isOpen, onClose, projects }) => {
 
   if (!isOpen) return null;
 
+  // Generate particle configs with curved paths - reduced count for less distraction
+  const particles = [...Array(45)].map((_, i) => {
+    const symbols = ['</>', '{ }', '[ ]', '<>', '()', 'fn', 'let', 'const', 'var', '=>', '==', '||', '&&', '=>'];
+    const symbol = symbols[Math.floor(Math.random() * symbols.length)];
+    const isLarge = Math.random() > 0.8; // Fewer large particles
+    const isMedium = !isLarge && Math.random() > 0.6;
+    const size = isLarge ? 'text-lg' : isMedium ? 'text-sm' : 'text-xs'; // Smaller overall
+    // 50-50 yellow and white with better distribution
+    const isYellow = i % 2 === 0;
+    const color = isYellow ? 'text-yellow-400' : 'text-white';
+    const opacity = isLarge ? '40' : isMedium ? '30' : '25'; // Increased opacity to see yellow better
+    
+    // Random start position
+    const startX = Math.random() * 100;
+    const startY = Math.random() * 100;
+    
+    // Create gentle curved path with subtle control points
+    const angle = Math.random() * Math.PI * 2;
+    const distance = 40 + Math.random() * 50; // Reduced to 40-90px for slower feel
+    
+    // Main end position
+    const endX = startX + Math.cos(angle) * distance;
+    const endY = startY + Math.sin(angle) * distance;
+    
+    // Control points for curve (creates the wave/arc effect)
+    const midX = startX + Math.cos(angle + Math.PI / 4) * (distance * 0.6);
+    const midY = startY + Math.sin(angle - Math.PI / 4) * (distance * 0.6);
+    
+    // Much longer lifetimes for very slow, ambient movement
+    const lifetime = 15 + Math.random() * 10; // 15-25 seconds
+    const delay = Math.random() * 2; // Reduced delay so particles start moving immediately
+    
+    // Subtle wave parameters for gentle, non-distracting motion
+    const waveAmplitude = 8 + Math.random() * 12; // Gentle wave (8-20px)
+    const waveFrequency = 1.5 + Math.random() * 1.5; // Fewer waves (1.5-3)
+    
+    return {
+      symbol,
+      size,
+      color,
+      opacity,
+      startX,
+      startY,
+      endX,
+      endY,
+      midX,
+      midY,
+      lifetime,
+      delay,
+      rotation: Math.random() * 360,
+      waveAmplitude,
+      waveFrequency,
+    };
+  });
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-zinc-950/95 backdrop-blur-xl">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-zinc-950/95 backdrop-blur-xl overflow-hidden">
       {/* Animated grid background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Animated grid lines */}
@@ -30,45 +85,59 @@ const ProjectsSection = ({ isOpen, onClose, projects }) => {
           animation: 'gridScroll 20s linear infinite'
         }} />
         
-        {/* Floating code symbols */}
-        {[...Array(40)].map((_, i) => {
-          const symbols = ['</>', '{ }', '[ ]', '<>', '()', 'fn', 'let', 'const', 'var', '=>'];
-          const symbol = symbols[Math.floor(Math.random() * symbols.length)];
-          const size = Math.random() > 0.6 ? 'text-base' : 'text-sm';
-          const opacity = Math.random() > 0.5 ? '30' : '20';
+        {/* Floating code symbols with curved, organic movement */}
+        {particles.map((particle, i) => (
+          <div
+            key={i}
+            className={`absolute ${particle.color}/${particle.opacity} font-mono ${particle.size} font-bold particle-float`}
+            style={{
+              '--start-x': `${particle.startX}%`,
+              '--start-y': `${particle.startY}%`,
+              '--mid-x': `${particle.midX}%`,
+              '--mid-y': `${particle.midY}%`,
+              '--end-x': `${particle.endX}%`,
+              '--end-y': `${particle.endY}%`,
+              '--lifetime': `${particle.lifetime}s`,
+              '--delay': `${particle.delay}s`,
+              '--rotation': `${particle.rotation}deg`,
+              '--wave-amplitude': `${particle.waveAmplitude}px`,
+              '--wave-frequency': particle.waveFrequency,
+              left: `${particle.startX}%`,
+              top: `${particle.startY}%`,
+              animation: `floatCurved var(--lifetime) cubic-bezier(0.4, 0, 0.2, 1) infinite`,
+              animationDelay: `var(--delay)`,
+              textShadow: particle.color.includes('yellow') 
+                ? '0 0 15px rgba(250, 204, 21, 0.6), 0 0 5px rgba(250, 204, 21, 0.8)' 
+                : '0 0 10px rgba(255, 255, 255, 0.3)',
+            }}
+          >
+            {particle.symbol}
+          </div>
+        ))}
+
+        {/* Glowing orbs with 50-50 colors */}
+        {[...Array(12)].map((_, i) => {
+          const isYellow = i % 2 === 0;
+          const color = isYellow 
+            ? 'radial-gradient(circle, rgba(250, 204, 21, 0.15) 0%, rgba(250, 204, 21, 0) 70%)'
+            : 'radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%)';
+          
           return (
             <div
-              key={i}
-              className={`absolute text-yellow-400/${opacity} font-mono ${size} font-bold`}
+              key={`glow-${i}`}
+              className="absolute rounded-full blur-3xl"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
-                animation: `floatCode ${8 + Math.random() * 8}s ease-in-out infinite`,
-                animationDelay: `${Math.random() * 5}s`,
-                textShadow: '0 0 10px rgba(250, 204, 21, 0.3)',
+                width: `${100 + Math.random() * 200}px`,
+                height: `${100 + Math.random() * 200}px`,
+                background: color,
+                animation: `morphBlob ${5 + Math.random() * 5}s ease-in-out infinite`,
+                animationDelay: `0s`,
               }}
-            >
-              {symbol}
-            </div>
+            />
           );
         })}
-
-        {/* Glowing orbs */}
-        {[...Array(8)].map((_, i) => (
-          <div
-            key={`glow-${i}`}
-            className="absolute rounded-full blur-3xl"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              width: `${100 + Math.random() * 200}px`,
-              height: `${100 + Math.random() * 200}px`,
-              background: `radial-gradient(circle, rgba(250, 204, 21, 0.1) 0%, rgba(250, 204, 21, 0) 70%)`,
-              animation: `morphBlob ${8 + Math.random() * 8}s ease-in-out infinite`,
-              animationDelay: `${Math.random() * 4}s`,
-            }}
-          />
-        ))}
       </div>
 
       <div className="relative max-w-7xl w-full h-[90vh] flex flex-col">
@@ -222,37 +291,56 @@ const ProjectsSection = ({ isOpen, onClose, projects }) => {
           }
         }
 
-        @keyframes floatCode {
-          0%, 100% {
-            transform: translateY(0) translateX(0) rotate(0deg) scale(1);
-            opacity: 0.3;
+        @keyframes floatCurved {
+          0% {
+            left: var(--start-x);
+            top: var(--start-y);
+            opacity: 0;
+            transform: rotate(0deg) scale(0.9) translateX(0);
+          }
+          15% {
+            opacity: 0.8;
+            transform: rotate(calc(var(--rotation) * 0.15)) scale(1) translateX(calc(sin(0.15 * var(--wave-frequency) * 3.14159) * var(--wave-amplitude)));
           }
           25% {
-            transform: translateY(-40px) translateX(15px) rotate(5deg) scale(1.1);
-            opacity: 0.6;
+            left: calc(var(--start-x) + (var(--mid-x) - var(--start-x)) * 0.5);
+            top: calc(var(--start-y) + (var(--mid-y) - var(--start-y)) * 0.5);
+            transform: rotate(calc(var(--rotation) * 0.25)) scale(1) translateX(calc(sin(0.25 * var(--wave-frequency) * 3.14159) * var(--wave-amplitude)));
           }
           50% {
-            transform: translateY(-60px) translateX(-10px) rotate(-5deg) scale(1.15);
-            opacity: 0.8;
+            left: var(--mid-x);
+            top: var(--mid-y);
+            transform: rotate(calc(var(--rotation) * 0.5)) scale(1.02) translateX(calc(sin(0.5 * var(--wave-frequency) * 3.14159) * var(--wave-amplitude)));
           }
           75% {
-            transform: translateY(-40px) translateX(20px) rotate(8deg) scale(1.1);
-            opacity: 0.6;
+            left: calc(var(--mid-x) + (var(--end-x) - var(--mid-x)) * 0.5);
+            top: calc(var(--mid-y) + (var(--end-y) - var(--mid-y)) * 0.5);
+            transform: rotate(calc(var(--rotation) * 0.75)) scale(1) translateX(calc(sin(0.75 * var(--wave-frequency) * 3.14159) * var(--wave-amplitude)));
+          }
+          85% {
+            opacity: 0.8;
+            transform: rotate(calc(var(--rotation) * 0.85)) scale(0.98) translateX(calc(sin(0.85 * var(--wave-frequency) * 3.14159) * var(--wave-amplitude)));
+          }
+          100% {
+            left: var(--end-x);
+            top: var(--end-y);
+            opacity: 0;
+            transform: rotate(var(--rotation)) scale(0.9) translateX(calc(sin(var(--wave-frequency) * 3.14159) * var(--wave-amplitude)));
           }
         }
 
         @keyframes morphBlob {
           0%, 100% {
             transform: translate(0, 0) scale(1);
-            opacity: 0.8;
+            opacity: 0.6;
           }
           33% {
-            transform: translate(20px, -30px) scale(1.1);
+            transform: translate(30px, -40px) scale(1.2);
             opacity: 1;
           }
           66% {
-            transform: translate(-20px, 20px) scale(0.9);
-            opacity: 0.6;
+            transform: translate(-30px, 30px) scale(0.85);
+            opacity: 0.5;
           }
         }
 
@@ -325,6 +413,10 @@ const ProjectsSection = ({ isOpen, onClose, projects }) => {
             opacity: 1;
             transform: translateX(0);
           }
+        }
+
+        .particle-float {
+          will-change: left, top, opacity, transform;
         }
 
         .animate-slide-down {
