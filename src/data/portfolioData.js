@@ -38,7 +38,7 @@ export const projects = [
   },
   {
     name: 'SNU ARC',
-    tech: 'React, Node, MySQL',
+    tech: 'React, PhP, MySQL',
     type: 'Full Stack, Campus Management',
     description: 'Student platform with facility tracking and room reservations',
     link: 'https://github.com/AmoghK0216/SNU_ARC',
