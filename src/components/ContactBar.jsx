@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Mail, Phone } from 'lucide-react';
+import { Mail, Phone, FileText } from 'lucide-react';
 
 const ContactBar = () => {
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
@@ -22,6 +22,14 @@ const ContactBar = () => {
       return () => section.removeEventListener('mousemove', handleMouseMove);
     }
   }, []);
+
+  // Handler to open resume in new tab
+  const handleResumeClick = () => {
+    // Replace this URL with your actual resume PDF URL
+    // You can host it on Google Drive, Dropbox, GitHub, or your own server
+    const resumeUrl = 'https://drive.google.com/file/d/1YEoE6MaCoiAQo3pr4UIB5Sw-Pmv_augB/view?usp=sharing'; // UPDATE THIS PATH
+    window.open(resumeUrl, '_blank', 'noopener,noreferrer');
+  };
 
   return (
     <section 
@@ -51,7 +59,7 @@ const ContactBar = () => {
         </div>
 
         {/* Contact options */}
-        <div className="flex flex-col sm:flex-row items-center gap-4 w-full justify-center">
+        <div className="flex flex-col sm:flex-row items-center gap-4 w-full justify-center flex-wrap">
           {/* Email */}
           <a 
             href="mailto:amoghkrishna16@gmail.com" 
@@ -82,6 +90,24 @@ const ContactBar = () => {
               </span>
             </div>
           </a>
+
+          {/* Divider */}
+          <div className="hidden sm:flex items-center">
+            <div className="w-px h-8 bg-yellow-400/30" />
+          </div>
+
+          {/* Resume Button */}
+          <button
+            onClick={handleResumeClick}
+            className="contact-button group/link relative flex items-center gap-3 px-6 py-3.5 bg-zinc-900/60 border border-yellow-400/30 hover:border-yellow-400 rounded-lg transition-all duration-300 w-full sm:w-auto justify-center overflow-hidden"
+          >
+            <div className="relative flex items-center gap-3 z-10">
+              <FileText size={18} className="text-yellow-400" />
+              <span className="text-zinc-300 group-hover/link:text-zinc-950 text-sm font-medium transition-colors duration-300">
+                Resume
+              </span>
+            </div>
+          </button>
         </div>
 
         {/* Subtle call to action text */}
