@@ -27,7 +27,7 @@ const ContactBar = () => {
   const handleResumeClick = () => {
     // Replace this URL with your actual resume PDF URL
     // You can host it on Google Drive, Dropbox, GitHub, or your own server
-    const resumeUrl = 'https://drive.google.com/file/d/1YEoE6MaCoiAQo3pr4UIB5Sw-Pmv_augB/view?usp=sharing'; // UPDATE THIS PATH
+    const resumeUrl = 'https://drive.google.com/file/d/1I35rkUr6CE-zNpEPkKEvKx1Po1RSTA89/view?usp=sharing';
     window.open(resumeUrl, '_blank', 'noopener,noreferrer');
   };
 
